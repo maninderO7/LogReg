@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg_grad"
+    tools:context=".LogScreen">
+
+
+    <ImageView
+        android:id="@+id/img_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/fitness_logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="50dp"
+
+        />
+
+    <TextView
+        android:id="@+id/tvWelcomeGreet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="40sp"
+        android:layout_marginBottom="30dp"
+        android:layout_below="@+id/img_logo"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:text="@string/welcome_back" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSignIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_below="@+id/tvWelcomeGreet"
+        android:layout_centerHorizontal="true"
+        android:focusable="true"
+        app:cornerRadius="20dp"
+        app:backgroundTint="@android:color/transparent"
+        android:text="SIGN IN"
+        android:clickable="true"
+        android:textSize="15sp"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        app:strokeColor="@color/white"
+        app:strokeWidth="2dp" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="SIGN UP"
+        android:layout_marginBottom="20dp"
+        app:cornerRadius="20dp"
+        app:backgroundTint="@android:color/transparent"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        android:layout_below="@+id/btnSignIn"
+        android:textSize="15sp"
+        app:strokeColor="@color/white"
+        app:strokeWidth="2dp" />
+
+
+</RelativeLayout>
