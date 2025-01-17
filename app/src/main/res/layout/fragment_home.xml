@@ -39,6 +39,16 @@
         android:layout_centerHorizontal="true"
         />
 
+    <Button
+        android:id="@+id/btnHomeSMS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SMS"
+        android:textSize="20sp"
+        android:layout_margin="30dp"
+        android:layout_below="@id/btnHomePass"
+        android:layout_centerHorizontal="true"
+        />
 
     <Button
         android:id="@+id/btnHomeShowAll"
@@ -47,7 +57,7 @@
         android:text="Show All"
         android:textSize="20sp"
         android:layout_margin="30dp"
-        android:layout_below="@id/btnHomePass"
+        android:layout_below="@id/btnHomeSMS"
         android:layout_centerHorizontal="true"
         />
 

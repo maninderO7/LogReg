@@ -57,14 +57,15 @@ class SignUpFrag : Fragment() {
             val email = binding.edtSignUpEmail.editText?.text.toString()
             val pass = binding.edtSignUpPass.editText?.text.toString()
             val confirmPass = binding.edtSignUpPassConfirm.editText?.text.toString()
+            val contact = binding.edtSignUpContact.editText?.text.toString()
 
-
-            if(!name.isEmpty() && !pass.isEmpty() && pass.equals(confirmPass) && Companion.isValidEmail(email)){
+            if(!name.isEmpty() && !pass.isEmpty() && pass.equals(confirmPass) && Companion.isValidEmail(email) && !contact.isEmpty()){
 
                 val bundle = Bundle().apply {
                     putString("name", name)
                     putString("email", email)
                     putString("pass", pass)
+                    putString("contact", contact)
                 }
 
                 Snackbar.make(view, "Success", Snackbar.LENGTH_SHORT).show()
@@ -86,6 +87,12 @@ class SignUpFrag : Fragment() {
                 }else{
                     binding.edtSignUpPass.setError(null)
                 }
+                if(contact.isEmpty()) {
+                    binding.edtSignUpContact.error = "Contact No. Please"
+                }else{
+                    binding.edtSignUpContact.setError(null)
+                }
+
                 if(!pass.equals(confirmPass)){
                     binding.edtSignUpPassConfirm.error = "Doesn't match"
                 }else{

@@ -1,24 +1,21 @@
 package com.o7.logreg
 
-import android.app.Dialog
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.navigation.NavController
+import androidx.fragment.app.Fragment
 import com.o7.logreg.databinding.FragmentHomeBinding
-import com.o7.logreg.databinding.FragmentSignUpBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val NAME = "name"
 private const val EMAIL = "email"
 private const val PASS = "pass"
-
+private const val CONTACT = "contact"
 /**
  * A simple [Fragment] subclass.
  * Use the [FragmentHome.newInstance] factory method to
@@ -29,6 +26,7 @@ class FragmentHome : Fragment() {
     private var name: String? = null
     private var email: String? = null
     private var pass: String? = null
+    private var contact: String? = null
     var list = arrayOf("one", "two", "three", "four")
 //    lateinit var navController: NavController
     lateinit var binding: FragmentHomeBinding
@@ -42,6 +40,7 @@ class FragmentHome : Fragment() {
             name = it.getString(NAME, "empty")
             email = it.getString(EMAIL, "empty")
             pass = it.getString(PASS, "empty")
+            contact = it.getString(CONTACT, "empty")
         }
     }
 
@@ -83,6 +82,16 @@ class FragmentHome : Fragment() {
                 create()
                 show()
             }
+
+
+            val intent = Intent(Intent.ACTION_SEND)
+            intent.setType("text/html")
+            intent.putExtra(Intent.EXTRA_EMAIL, email)
+            intent.putExtra(Intent.EXTRA_SUBJECT, "Subject")
+            intent.putExtra(Intent.EXTRA_TEXT, "I'm email body.")
+            startActivity(Intent.createChooser(intent, "Send Email"))
+
+
         }
         binding.btnHomePass.setOnClickListener {
 
@@ -98,12 +107,25 @@ class FragmentHome : Fragment() {
             }
         }
 
+        binding.btnHomeSMS.setOnClickListener {
+
+            val intent = Intent(Intent.ACTION_VIEW);
+            //intent.setData(Uri.parse("sms:"));
+            intent.setType("vnd.android-dir/mms-sms");
+            intent.putExtra(Intent.EXTRA_TEXT, "");
+            intent.putExtra("address",  contact);
+            context?.startActivity(intent);
+
+
+        }
+
+
         binding.btnHomeShowAll.setOnClickListener {
-            val pramList = arrayOf(name, email, pass)
+            val pramList = arrayOf(name, email, pass, contact)
 
 
                 AlertDialog.Builder(requireContext()).apply{
-                    setMessage("Details\n\n$name\n$email\n$pass")
+                    setMessage("Details\n\n$name\n$email\n$pass\n$contact")
                     setItems(list){ _ , which ->
                         run {
                             Toast.makeText(
